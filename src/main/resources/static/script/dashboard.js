@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const nextBtn = document.getElementById('page-next');
   const pageInfo = document.getElementById('page-info');
   const searchInput = document.getElementById('club-search');
+  const activeFilter = document.getElementById('active-filter');
   const noResults = document.getElementById('no-search-results');
   if (!cards.length || !prevBtn || !nextBtn || !pageInfo) return;
 
@@ -43,10 +44,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
   function filterCards() {
     const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
+    const showActive = activeFilter ? activeFilter.value : 'true';
     cards.forEach(c => {
       const nameEl = c.querySelector('h3');
       const name = (nameEl ? nameEl.textContent : '').toLowerCase();
-      c.classList.toggle('search-hidden', query.length > 0 && !name.includes(query));
+      const matchesSearch = query.length === 0 || name.includes(query);
+      const isActive = c.dataset.active === 'true';
+      const matchesActive = isActive === (showActive === 'true');
+      c.classList.toggle('search-hidden', !matchesSearch || !matchesActive);
     });
     currentPage = 0;
     showPage(0);
@@ -54,6 +59,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
   if (searchInput) {
     searchInput.addEventListener('input', filterCards);
+  }
+
+  if (activeFilter) {
+    activeFilter.addEventListener('change', filterCards);
   }
 
   prevBtn.addEventListener('click', () => { if (currentPage > 0) showPage(currentPage - 1); });
