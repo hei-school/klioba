@@ -44,13 +44,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
   function filterCards() {
     const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
-    const showActive = activeFilter ? activeFilter.value : 'true';
+    const showActive = activeFilter ? activeFilter.value : 'all';
     cards.forEach(c => {
       const nameEl = c.querySelector('h3');
       const name = (nameEl ? nameEl.textContent : '').toLowerCase();
       const matchesSearch = query.length === 0 || name.includes(query);
       const isActive = c.dataset.active === 'true';
-      const matchesActive = isActive === (showActive === 'true');
+      const matchesActive = showActive === 'all' || isActive === (showActive === 'true');
       c.classList.toggle('search-hidden', !matchesSearch || !matchesActive);
     });
     currentPage = 0;
