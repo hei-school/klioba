@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 import school.hei.klioba.model.Event;
 import school.hei.klioba.model.psp.vola.VolaPsp;
@@ -36,7 +37,12 @@ public class EventService {
   public Page<Event> findPageByClubIdWithPaymentResolution(
       String clubId, String search, Instant dateFrom, Instant dateTo, int page, int size) {
     return eventRepository
-        .findByClubIdWithFilters(clubId, search, dateFrom, dateTo, PageRequest.of(page, size))
+        .findByClubIdWithFilters(
+            clubId,
+            search,
+            dateFrom,
+            dateTo,
+            PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "creationInstant")))
         .map(this::resolvePayment);
   }
 
