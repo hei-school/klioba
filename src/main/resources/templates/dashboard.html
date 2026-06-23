@@ -23,19 +23,19 @@
     <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-10">
       <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-4 sm:p-5 flex flex-col justify-center">
         <h3 class="text-gray-500 font-medium text-xs mb-1">Trésorerie totale</h3>
-        <p class="text-xl sm:text-2xl font-bold text-[#9933cc] mt-0.5"
+        <p class="text-xl sm:text-2xl font-bold text-[#16163f] mt-0.5"
            th:text="${#numbers.formatInteger(totalRemaining, 0, 'COMMA') + ' Ar'}">0 Ar</p>
         <p class="text-[10px] text-gray-400 mt-1">Solde global de tous les clubs</p>
       </div>
       <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-4 sm:p-5 flex flex-col justify-center">
         <h3 class="text-gray-500 font-medium text-xs mb-1">Cotisations reçues</h3>
-        <p class="text-xl sm:text-2xl font-bold text-[#2E9A6F] mt-0.5"
+        <p class="text-xl sm:text-2xl font-bold text-[#16163f] mt-0.5"
            th:text="${#numbers.formatInteger(totalCotisations, 0, 'COMMA') + ' Ar'}">0 Ar</p>
         <p class="text-[10px] text-gray-400 mt-1">Total des cotisations</p>
       </div>
       <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-4 sm:p-5 flex flex-col justify-center">
         <h3 class="text-gray-500 font-medium text-xs mb-1">Dépenses effectuées</h3>
-        <p class="text-xl sm:text-2xl font-bold text-[#E53E3E] mt-0.5"
+        <p class="text-xl sm:text-2xl font-bold text-[#16163f] mt-0.5"
            th:text="${#numbers.formatInteger(totalDepenses, 0, 'COMMA') + ' Ar'}">0 Ar</p>
         <p class="text-[10px] text-gray-400 mt-1">Total des dépenses</p>
       </div>
