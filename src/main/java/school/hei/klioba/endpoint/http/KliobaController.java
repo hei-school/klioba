@@ -123,7 +123,7 @@ public class KliobaController {
     return "logout-confirm";
   }
 
-@GetMapping("/payment")
+  @GetMapping("/payment")
   public String paymentPage() {
     return "payment";
   }
