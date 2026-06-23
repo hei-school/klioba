@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import school.hei.klioba.model.psp.PspType;
 
 class EventTest {
-  private static final Club CLUB = new Club("c1", "Club 1");
+  private static final Club CLUB = new Club("c1", "Club 1", true);
 
   @Test
   void from_withPositiveAmount_createsMembershipFee() {
