@@ -122,4 +122,9 @@ public class KliobaController {
   public String showLogoutConfirmation() {
     return "logout-confirm";
   }
+
+@GetMapping("/payment")
+  public String paymentPage() {
+    return "payment";
+  }
 }
