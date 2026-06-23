@@ -52,7 +52,7 @@
       <h2 class="text-xl font-bold text-black">Clubs</h2>
       <div class="w-full sm:w-72 bg-white rounded-lg border border-gray-200 shadow-sm flex items-center px-4 py-2.5 focus-within:ring-2 focus-within:ring-[#9933cc]/20 focus-within:border-[#9933cc] transition-all">
         <span class="material-icons text-gray-400 text-sm mr-2">search</span>
-        <input type="text" placeholder="Rechercher un club..." class="w-full bg-transparent border-none outline-none text-sm text-gray-700 placeholder-gray-400">
+        <input id="club-search" type="text" placeholder="Rechercher un club..." class="w-full bg-transparent border-none outline-none text-sm text-gray-700 placeholder-gray-400">
       </div>
     </div>
 
@@ -70,6 +70,13 @@
       <button id="page-next" class="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 bg-white rounded-full shadow-md border border-gray-200 hover:bg-gray-50 transition-colors">
         <span class="material-icons text-gray-600 text-sm sm:text-base">chevron_right</span>
       </button>
+    </div>
+
+    <div id="no-search-results" class="text-center py-16 hidden">
+      <div class="bg-white rounded-full w-20 h-20 flex items-center justify-center mx-auto shadow-sm mb-4">
+        <span class="material-icons text-4xl text-gray-300">search_off</span>
+      </div>
+      <p class="text-gray-500 font-medium">Aucun club ne correspond à votre recherche</p>
     </div>
 
     <div th:if="${#lists.isEmpty(clubs)}" class="text-center py-16">
