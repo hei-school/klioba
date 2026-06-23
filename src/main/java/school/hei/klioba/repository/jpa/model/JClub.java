@@ -1,5 +1,6 @@
 package school.hei.klioba.repository.jpa.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
@@ -22,6 +23,9 @@ public class JClub {
   @Id private String id;
 
   private String name;
+
+  @Column(nullable = false)
+  private boolean active;
 
   @ManyToMany(mappedBy = "clubs")
   private List<JUser> users = new ArrayList<>();
