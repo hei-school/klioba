@@ -18,7 +18,12 @@ public class ClubService {
   private final EventService eventService;
 
   public record ClubStats(
-      String id, String name, int totalCotisations, int members, int remainingFund, boolean active) {}
+      String id,
+      String name,
+      int totalCotisations,
+      int members,
+      int remainingFund,
+      boolean active) {}
 
   public List<ClubStats> getAllClubStats() {
     return clubRepository.findAll().stream().map(this::computeStats).toList();
