@@ -23,8 +23,8 @@ class ClubServiceTest {
   EventService eventService = mock(EventService.class);
   ClubService clubService = new ClubService(clubRepository, eventService);
 
-  Club club = new Club("c1", "Club 1");
-  Club club2 = new Club("c2", "Club 2");
+  Club club = new Club("c1", "Club 1", true);
+  Club club2 = new Club("c2", "Club 2", true);
   User user1 = new User("u1", "John", "Doe", "john@email.com");
   User user2 = new User("u2", "Jane", "Smith", "jane@email.com");
 
