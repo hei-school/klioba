@@ -8,16 +8,17 @@ class ClubTest {
 
   @Test
   void club_creation_succeeds() {
-    var club = new Club("cuisine", "Club Cuisine");
+    var club = new Club("cuisine", "Club Cuisine", true);
 
     assertNotNull(club);
     assertEquals("cuisine", club.getId());
     assertEquals("Club Cuisine", club.getName());
+    assertTrue(club.isActive());
   }
 
   @Test
   void club_with_different_id_and_name() {
-    var club = new Club("sport", "Club Sport");
+    var club = new Club("sport", "Club Sport", true);
 
     assertEquals("sport", club.getId());
     assertEquals("Club Sport", club.getName());
@@ -25,7 +26,7 @@ class ClubTest {
 
   @Test
   void club_toString_contains_id_and_name() {
-    var club = new Club("cuisine", "Club Cuisine");
+    var club = new Club("cuisine", "Club Cuisine", true);
     var str = club.toString();
 
     assertNotNull(str);
@@ -35,7 +36,7 @@ class ClubTest {
 
   @Test
   void club_with_null_id() {
-    var club = new Club(null, "Club Null");
+    var club = new Club(null, "Club Null", true);
 
     assertNotNull(club);
     assertNull(club.getId());
@@ -44,7 +45,7 @@ class ClubTest {
 
   @Test
   void club_with_null_name() {
-    var club = new Club("null-name", null);
+    var club = new Club("null-name", null, true);
 
     assertNotNull(club);
     assertEquals("null-name", club.getId());
@@ -53,15 +54,15 @@ class ClubTest {
 
   @Test
   void club_with_empty_id() {
-    var club = new Club("", "Club Empty");
+    var club = new Club("", "Club Empty", true);
 
     assertEquals("", club.getId());
   }
 
   @Test
   void club_two_instances_with_same_values_are_distinct_objects() {
-    var club1 = new Club("cuisine", "Club Cuisine");
-    var club2 = new Club("cuisine", "Club Cuisine");
+    var club1 = new Club("cuisine", "Club Cuisine", true);
+    var club2 = new Club("cuisine", "Club Cuisine", true);
 
     assertNotSame(club1, club2);
     assertEquals("cuisine", club1.getId());
