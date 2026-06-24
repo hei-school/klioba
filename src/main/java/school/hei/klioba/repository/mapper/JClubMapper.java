@@ -8,13 +8,14 @@ import school.hei.klioba.repository.jpa.model.JClub;
 public class JClubMapper {
 
   public Club toDomain(JClub jClub) {
-    return new Club(jClub.getId(), jClub.getName());
+    return new Club(jClub.getId(), jClub.getName(), jClub.isActive());
   }
 
   public JClub toEntity(Club club) {
     JClub jClub = new JClub();
     jClub.setId(club.getId());
     jClub.setName(club.getName());
+    jClub.setActive(club.isActive());
     return jClub;
   }
 }
