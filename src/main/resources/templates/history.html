@@ -9,59 +9,65 @@
     <link rel="stylesheet" th:href="@{/style/history.css}">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="min-h-screen bg-gray-100 font-[Poppins] text-gray-700">
+<body class="min-h-screen bg-[#F4F5F7] font-[Poppins] text-gray-700">
 
 <div th:replace="fragments/header :: header"></div>
 
 <div class="container mx-auto px-4 sm:px-6 pt-6 sm:pt-10 pb-10 sm:pb-14">
 
     <div class="text-center mb-8">
-      <p class="text-gray-500 font-medium text-xs sm:text-sm">Club</p>
+      <p class="text-gray-400 font-medium text-xs uppercase tracking-wider">Club</p>
       <p class="text-2xl sm:text-3xl font-bold text-[#16163f]" th:text="${clubName}">Book Club</p>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-4 sm:mb-6 max-w-4xl mx-auto">
-        <div class="bg-white rounded-lg shadow-sm p-4 hover:shadow transition flex flex-col justify-center items-center">
-            <h3 class="text-[#16163f] font-semibold text-sm sm:text-base lg:text-lg text-center">Cotisations</h3>
-            <p class="text-lg sm:text-xl font-extrabold text-[#9933cc] mt-1"
+        <div class="bg-white rounded-2xl shadow-sm p-4 sm:p-5 flex flex-col justify-center items-center">
+            <span class="text-gray-400 text-xs font-medium uppercase tracking-wider mb-1">Cotisations</span>
+            <p class="text-xl sm:text-2xl font-bold text-[#DFA408]"
                th:text="${fund.allConfirmedFees != null ? #numbers.formatInteger(fund.allConfirmedFees, 0, 'COMMA') + ' Ar' : '--'}">0 Ar</p>
+            <p class="text-xs text-gray-400 mt-1">Total reçu</p>
         </div>
-        <div class="bg-white rounded-lg shadow-sm p-4 hover:shadow transition flex flex-col justify-center items-center">
-            <h3 class="text-[#16163f] font-semibold text-sm sm:text-base lg:text-lg text-center">Dépenses</h3>
-            <p class="text-lg sm:text-xl font-extrabold text-[#9933cc] mt-1"
+        <div class="bg-white rounded-2xl shadow-sm p-4 sm:p-5 flex flex-col justify-center items-center">
+            <span class="text-gray-400 text-xs font-medium uppercase tracking-wider mb-1">Dépenses</span>
+            <p class="text-xl sm:text-2xl font-bold text-[#DFA408]"
                th:text="${fund.allConfirmedWithdrawals != null ? #numbers.formatInteger(fund.allConfirmedWithdrawals, 0, 'COMMA') + ' Ar' : '--'}">0 Ar</p>
+            <p class="text-xs text-gray-400 mt-1">Total dépensé</p>
         </div>
-        <div class="bg-white rounded-lg shadow-sm p-4 hover:shadow transition flex flex-col justify-center items-center">
-            <h3 class="text-[#16163f] font-semibold text-sm sm:text-base lg:text-lg text-center">Trésorerie</h3>
-            <p class="text-lg sm:text-xl font-extrabold text-[#9933cc] mt-1"
+        <div class="bg-white rounded-2xl shadow-sm p-4 sm:p-5 flex flex-col justify-center items-center">
+            <span class="text-gray-400 text-xs font-medium uppercase tracking-wider mb-1">Trésorerie</span>
+            <p class="text-xl sm:text-2xl font-bold text-[#DFA408]"
                th:text="${fund.confirmedRemainingFund != null ? #numbers.formatInteger(fund.confirmedRemainingFund, 0, 'COMMA') + ' Ar' : '--'}">0 Ar</p>
+            <p class="text-xs text-gray-400 mt-1">Fonds disponibles</p>
         </div>
     </div>
 
     <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 gap-3">
-        <h2 class="text-lg sm:text-xl font-bold text-[#16163f]">Historique des transactions</h2>
+        <div class="flex items-center gap-3">
+            <div class="w-1 h-6 bg-[#DFA408] rounded-full"></div>
+            <h2 class="text-lg sm:text-xl font-bold text-[#16163f]">Historique des transactions</h2>
+        </div>
         <form th:action="@{/history/{clubId}(clubId=${clubId})}" method="get" class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
             <input type="text" name="search" placeholder="Rechercher par nom ou email..."
                    th:value="${search}"
-                   class="border border-gray-200 rounded-lg px-3 py-2 text-xs outline-none focus:ring-0 focus:border-gray-400 transition-all min-w-[200px]">
+                   class="border border-gray-200 rounded-xl px-3 py-2 text-xs outline-none focus:ring-2 focus:ring-[#DFA408]/30 focus:border-[#DFA408] transition-all min-w-[200px]">
             <div class="flex items-center gap-2">
                 <label class="text-xs text-gray-500 font-medium whitespace-nowrap">Du :</label>
                 <input type="date" name="dateFrom" th:value="${dateFrom}"
-                       class="flex-1 sm:flex-none border border-gray-200 rounded-lg px-3 py-2 text-xs outline-none focus:ring-0 focus:border-gray-400 transition-all">
+                       class="flex-1 sm:flex-none border border-gray-200 rounded-xl px-3 py-2 text-xs outline-none focus:ring-2 focus:ring-[#DFA408]/30 focus:border-[#DFA408] transition-all">
             </div>
             <div class="flex items-center gap-2">
                 <label class="text-xs text-gray-500 font-medium whitespace-nowrap">Au :</label>
                 <input type="date" name="dateTo" th:value="${dateTo}"
-                       class="flex-1 sm:flex-none border border-gray-200 rounded-lg px-3 py-2 text-xs outline-none focus:ring-0 focus:border-gray-400 transition-all">
+                       class="flex-1 sm:flex-none border border-gray-200 rounded-xl px-3 py-2 text-xs outline-none focus:ring-2 focus:ring-[#DFA408]/30 focus:border-[#DFA408] transition-all">
             </div>
             <button type="submit"
-                    class="bg-[#16163f] hover:bg-opacity-90 text-white text-xs font-medium py-2 px-4 rounded-lg transition-all flex items-center justify-center gap-1 sm:self-auto">
+                    class="bg-[#DFA408] hover:bg-[#c08f07] text-white text-xs font-medium py-2 px-4 rounded-xl transition-all flex items-center justify-center gap-1 sm:self-auto">
                 <span class="material-icons text-sm">filter_list</span>
                 Filtrer
             </button>
             <a th:if="${search != null or dateFrom != null or dateTo != null}"
                th:href="@{/history/{clubId}(clubId=${clubId})}"
-               class="border border-gray-300 hover:border-gray-500 text-gray-600 hover:text-gray-800 text-xs font-medium py-2 px-3 rounded-lg transition-all flex items-center justify-center gap-1 sm:self-auto">
+               class="border border-gray-300 hover:border-gray-500 text-gray-600 hover:text-gray-800 text-xs font-medium py-2 px-3 rounded-xl transition-all flex items-center justify-center gap-1 sm:self-auto">
                 <span class="material-icons text-sm">close</span>
                 Réinitialiser
             </a>
@@ -69,7 +75,7 @@
     </div>
 
     <!-- Table Container with Horizontal Scroll -->
-    <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+    <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
         <div class="overflow-x-auto">
             <table class="w-full table-auto min-w-[800px]">
                 <thead class="bg-[#16163f] text-white">
@@ -125,7 +131,7 @@
                             Cotisation
                         </span>
                         <span th:unless="${event.event.getClass().getSimpleName() == 'MembershipFee'}"
-                              class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 whitespace-nowrap">
+                              class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-orange-100 text-orange-800 whitespace-nowrap">
                             Retrait
                         </span>
                     </td>
@@ -135,7 +141,7 @@
                         <span th:if="${event.event.payment.amount != null}"
                               th:text="${#numbers.formatInteger(event.event.payment.amount, 0, 'COMMA') + ' Ar'}"
                               class="text-xs font-semibold whitespace-nowrap"
-                              th:classappend="${event.event.payment.amount >= 0 ? 'text-green-600' : 'text-blue-600'}">
+                              th:classappend="${event.event.payment.amount >= 0 ? 'text-green-600' : 'text-amber-600'}">
                             0 Ar
                         </span>
                         <span th:unless="${event.event.payment.amount != null}"
@@ -211,18 +217,18 @@
     <div class="flex flex-col sm:flex-row justify-center items-center mt-4 sm:mt-6 gap-3 sm:gap-2">
         <a th:if="${currentPage > 0}"
             th:href="@{/history/{clubId}(clubId=${clubId}, page=${currentPage - 1}, size=${size}, search=${search}, dateFrom=${dateFrom}, dateTo=${dateTo})}"
-           class="w-full sm:w-auto px-4 py-2 bg-white border border-gray-300 rounded-lg text-sm hover:bg-gray-50 transition-colors flex items-center justify-center gap-1">
+           class="w-full sm:w-auto px-4 py-2 bg-white border border-gray-200 rounded-xl text-sm shadow-sm hover:border-[#DFA408] hover:text-[#DFA408] hover:bg-[#DFA408]/5 transition-all flex items-center justify-center gap-1">
             <span class="material-icons text-sm">chevron_left</span>
             <span>Précédent</span>
         </a>
 
-        <span class="w-full sm:w-auto px-4 py-2 bg-[#9933cc] text-white rounded-lg text-sm flex items-center justify-center">
+        <span class="w-full sm:w-auto px-4 py-2 bg-[#DFA408] text-white rounded-xl text-sm shadow-sm flex items-center justify-center">
             Page <span th:text="${currentPage + 1}" class="mx-1 font-semibold"></span> sur <span th:text="${totalPages}" class="mx-1 font-semibold"></span>
         </span>
 
         <a th:if="${currentPage + 1 < totalPages}"
             th:href="@{/history/{clubId}(clubId=${clubId}, page=${currentPage + 1}, size=${size}, search=${search}, dateFrom=${dateFrom}, dateTo=${dateTo})}"
-           class="w-full sm:w-auto px-4 py-2 bg-white border border-gray-300 rounded-lg text-sm hover:bg-gray-50 transition-colors flex items-center justify-center gap-1">
+           class="w-full sm:w-auto px-4 py-2 bg-white border border-gray-200 rounded-xl text-sm shadow-sm hover:border-[#DFA408] hover:text-[#DFA408] hover:bg-[#DFA408]/5 transition-all flex items-center justify-center gap-1">
             <span>Suivant</span>
             <span class="material-icons text-sm">chevron_right</span>
         </a>
