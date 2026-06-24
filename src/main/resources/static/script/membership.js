@@ -16,6 +16,13 @@ function copyCode() {
     })
 }
 
+function toggleInstructions() {
+    const container = document.getElementById("payment-instructions")
+    const icon = document.getElementById("toggle-icon")
+    container.classList.toggle("hidden")
+    icon.textContent = container.classList.contains("hidden") ? "chevron_right" : "expand_more"
+}
+
 function toggleStatuts() {
     const dropdownElement = document.getElementById("statutsDropdown")
     dropdownElement.classList.toggle("dropdown-open")
