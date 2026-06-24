@@ -1,92 +1,216 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Klioba - Clubs HEI</title>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        body { font-family: 'Poppins', sans-serif; }
-
-        .image-fade-mask {
-            -webkit-mask-image: linear-gradient(to right, transparent 0%, black 38%, black 100%);
-            mask-image: linear-gradient(to right, transparent 0%, black 38%, black 100%);
+<doctype html>
+  <html xmlns:th="http://www.thymeleaf.org">
+    <head>
+      <title>Klioba - Clubs HEI</title>
+      <meta charset="utf-8" />
+      <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      />
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      />
+      <script src="https://cdn.tailwindcss.com"></script>
+      <style>
+        body {
+          font-family: "Poppins", sans-serif;
         }
 
-        .cta-btn { transition: background-color 0.2s ease; }
-    </style>
-</head>
+        .image-fade-mask {
+          -webkit-mask-image: linear-gradient(
+            to right,
+            transparent 0%,
+            black 38%,
+            black 100%
+          );
+          mask-image: linear-gradient(
+            to right,
+            transparent 0%,
+            black 38%,
+            black 100%
+          );
+        }
 
-<body class="min-h-screen bg-white font-[Poppins] text-gray-700 overflow-x-hidden">
+        .cta-btn {
+          transition: background-color 0.2s ease;
+        }
 
-<div th:replace="fragments/header :: header"></div>
+        .gold-border {
+          border-color: #dfa408;
+        }
 
-<section class="relative w-full bg-white overflow-hidden">
+        .gold-hover:hover {
+          color: #dfa408;
+        }
 
-    <div class="hidden xl:block absolute inset-y-0 right-0 w-[58%] z-0 pointer-events-none image-fade-mask">
-        <img
-                src="https://i.ibb.co/WNWPDQ1D/Chat-GPT-Image-Jun-21-2026-10-40-38-AM-tuxpi-1.jpg"
-                alt="HEI Club Members"
-                class="w-full h-full object-cover object-center"
-        />
-    </div>
+        .decorative-line {
+          width: 60px;
+          height: 4px;
+          background-color: #dfa408;
+          border-radius: 2px;
+        }
 
-    <div class="relative z-10 w-full
-                container mx-auto px-4 sm:px-6
-                flex flex-col xl:flex-row xl:items-center
-                xl:min-h-[calc(100vh-64px)]
-                py-12 sm:py-16 xl:py-0
-                gap-8 sm:gap-10 xl:gap-0">
+        .feature-card {
+          transition:
+            transform 0.2s ease,
+            box-shadow 0.2s ease;
+        }
 
-        <div class="w-full xl:w-[50%] flex flex-col gap-5 sm:gap-7">
+        .feature-card:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 12px 24px rgba(223, 164, 8, 0.15);
+          border-color: #dfa408;
+        }
+      </style>
+    </head>
 
-            <h1 class="text-[32px] sm:text-[42px] lg:text-[48px] xl:text-[52px] font-bold leading-[1.12] text-[#16163f]">
-                La gestion des cotisations<br>
-                <span class="text-[#9933cc]">en toute simplicité.</span>
+    <body
+      class="min-h-screen bg-white font-[Poppins] text-gray-700 overflow-x-hidden"
+    >
+      <div th:replace="fragments/header :: header"></div>
+
+      <section class="relative w-full bg-white overflow-hidden">
+        <div
+          class="hidden xl:block absolute inset-y-0 right-0 w-[58%] z-0 pointer-events-none image-fade-mask"
+        >
+          <img
+            src="https://i.ibb.co/WNWPDQ1D/Chat-GPT-Image-Jun-21-2026-10-40-38-AM-tuxpi-1.jpg"
+            alt="HEI Club Members"
+            class="w-full h-full object-cover object-center"
+          />
+        </div>
+
+        <div
+          class="relative z-10 w-full container mx-auto px-4 sm:px-6 flex flex-col xl:flex-row xl:items-center xl:min-h-[calc(100vh-64px)] py-12 sm:py-16 xl:py-0 gap-8 sm:gap-10 xl:gap-0"
+        >
+          <div class="w-full xl:w-[50%] flex flex-col gap-5 sm:gap-7">
+            <h1
+              class="text-[32px] sm:text-[42px] lg:text-[48px] xl:text-[52px] font-bold leading-[1.12] text-[#16163f]"
+            >
+              La gestion des cotisations
+              <span class="text-[#DFA408]"> en toute simplicité.</span><br />
             </h1>
 
-            <p class="text-base sm:text-lg text-gray-500 leading-relaxed max-w-lg">
-                Klioba est la plateforme dédiée aux clubs de HEI pour la gestion des cotisations étudiantes. Les membres peuvent contribuer facilement, tandis que les responsables suivent les paiements et l'évolution des fonds de leur club en toute transparence.
+            <p
+              class="text-base sm:text-lg text-gray-500 leading-relaxed max-w-lg"
+            >
+              Klioba est la plateforme dédiée aux clubs de HEI pour la gestion
+              des cotisations étudiantes. Les membres peuvent contribuer
+              facilement, tandis que les responsables suivent les paiements et
+              l'évolution des fonds de leur club en toute transparence.
             </p>
 
-            <div>
-                <a href="/dashboard"
-                   class="cta-btn inline-flex items-center gap-2
-                          bg-[#9933cc] hover:bg-[#7a28a3] text-white
-                          font-semibold py-3 px-8 rounded-full text-sm sm:text-base">
-                    Commencer maintenant
-                    <span class="material-icons text-sm">arrow_forward</span>
-                </a>
+            <div class="flex flex-wrap items-center gap-4">
+              <a
+                href="/dashboard"
+                class="cta-btn inline-flex items-center gap-2 bg-[#DFA408] hover:bg-[#c08f07] text-white font-semibold py-3 px-8 rounded-lg text-sm sm:text-base shadow-lg shadow-[#DFA408]/30"
+              >
+                Commencer maintenant
+                <span class="material-icons text-sm">arrow_forward</span>
+              </a>
+              <a
+                href="#contact"
+                class="inline-flex items-center gap-2 border-2 border-[#DFA408] text-[#DFA408] font-semibold py-3 px-8 rounded-lg text-sm sm:text-base hover:bg-[#DFA408] hover:text-white transition-colors duration-200"
+              >
+                Nous contacter
+              </a>
+            </div>
+          </div>
+
+          <div class="hidden xl:block xl:w-[50%]"></div>
+        </div>
+
+        <div class="xl:hidden w-full container mx-auto px-4 sm:px-6 pb-16">
+          <div
+            class="w-full h-[240px] sm:h-[360px] rounded-2xl overflow-hidden shadow-md"
+          >
+            <img
+              src="https://i.ibb.co/qY4p7Z22/Chat-GPT-Image-Jun-21-2026-10-40-38-AM.png"
+              alt="HEI Club Members"
+              class="w-full h-full object-cover object-center"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section class="py-16 sm:py-20 bg-gray-50">
+        <div class="container mx-auto px-4 sm:px-6">
+          <div class="text-center mb-12">
+            <div class="decorative-line mx-auto mb-4"></div>
+            <h2 class="text-2xl sm:text-3xl font-bold text-[#16163f]">
+              Pourquoi choisir <span class="text-[#DFA408]">Klioba</span> ?
+            </h2>
+          </div>
+
+          <div
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
+          >
+            <div
+              class="feature-card bg-white border-2 border-gray-100 rounded-xl p-6 sm:p-8 text-center"
+            >
+              <span class="material-icons text-4xl text-[#DFA408] mb-4"
+                >payments</span
+              >
+              <h3 class="text-lg font-bold text-[#16163f] mb-2">
+                Paiements simplifiés
+              </h3>
+              <p class="text-sm text-gray-500">
+                Les membres paient leurs cotisations en quelques clics, sans
+                friction.
+              </p>
             </div>
 
+            <div
+              class="feature-card bg-white border-2 border-gray-100 rounded-xl p-6 sm:p-8 text-center"
+            >
+              <span class="material-icons text-4xl text-[#DFA408] mb-4"
+                >trending_up</span
+              >
+              <h3 class="text-lg font-bold text-[#16163f] mb-2">
+                Suivi en temps réel
+              </h3>
+              <p class="text-sm text-gray-500">
+                Visualisez l'évolution des fonds de votre club avec des tableaux
+                clairs.
+              </p>
+            </div>
+
+            <div
+              class="feature-card bg-white border-2 border-gray-100 rounded-xl p-6 sm:p-8 text-center sm:col-span-2 lg:col-span-1"
+            >
+              <span class="material-icons text-4xl text-[#DFA408] mb-4"
+                >groups</span
+              >
+              <h3 class="text-lg font-bold text-[#16163f] mb-2">
+                Gestion d'équipe
+              </h3>
+              <p class="text-sm text-gray-500">
+                Les responsables suivent les paiements et gèrent les membres
+                facilement.
+              </p>
+            </div>
+          </div>
         </div>
+      </section>
 
-        <div class="hidden xl:block xl:w-[50%]"></div>
-
-    </div>
-
-    <div class="xl:hidden w-full container mx-auto px-4 sm:px-6 pb-16">
-        <div class="w-full h-[240px] sm:h-[360px] rounded-2xl overflow-hidden shadow-md">
-            <img
-                    src="https://i.ibb.co/qY4p7Z22/Chat-GPT-Image-Jun-21-2026-10-40-38-AM.png"
-                    alt="HEI Club Members"
-                    class="w-full h-full object-cover object-center"
-            />
+      <footer id="contact" class="bg-[#16163f] text-white py-8 sm:py-12">
+        <div class="container mx-auto px-4 sm:px-6 text-center">
+          <h3 class="text-xl sm:text-2xl font-bold mb-3">Contactez-nous</h3>
+          <p class="mb-3 text-sm sm:text-base text-gray-300">
+            Pour toute question sur les clubs HEI.
+          </p>
+          <a
+            href="mailto:contact@hei.school"
+            class="text-base sm:text-lg text-[#DFA408] font-semibold hover:text-[#c08f07] transition-colors"
+            >contact@hei.school</a
+          >
+          <p class="mt-8 text-xs sm:text-sm text-gray-500">
+            © 2026 Klioba – Clubs HEI. Tous droits réservés.
+          </p>
         </div>
-    </div>
-
-</section>
-
-<footer id="contact" class="bg-[#16163f] text-white py-8 sm:py-12">
-    <div class="container mx-auto px-4 sm:px-6 text-center">
-        <h3 class="text-xl sm:text-2xl font-bold mb-3">Contactez-nous</h3>
-        <p class="mb-3 text-sm sm:text-base text-gray-300">Pour toute question sur les clubs HEI.</p>
-        <a href="mailto:contact@hei.school" class="text-base sm:text-lg text-[#9933cc] font-semibold hover:underline">contact@hei.school</a>
-        <p class="mt-8 text-xs sm:text-sm text-gray-500">© 2026 Klioba – Clubs HEI. Tous droits réservés.</p>
-    </div>
-</footer>
-
-</body>
-</html>
+      </footer>
+    </body>
+  </html>
+</doctype>
