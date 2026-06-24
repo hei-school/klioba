@@ -39,15 +39,19 @@ public class MembershipFeeCreationFormConsumer {
       throw new IllegalArgumentException("pspId format incorrect format");
     }
 
-    var paymentCreatedInVola =
-        volaPsp.create(
-            randomUUID().toString(), pspType(), membershipFeeCreationForm.pspId(), email);
-    var payment = paymentRepository.save(paymentCreatedInVola);
-    var user = userFrom(membershipFeeCreationForm, email);
     var club =
         clubRepository
             .findById(clubId)
             .orElseThrow(() -> new NoSuchElementException("Club not found: " + clubId));
+    var paymentCreatedInVola =
+        volaPsp.create(
+            randomUUID().toString(),
+            pspType(),
+            membershipFeeCreationForm.pspId(),
+            email,
+            club.getName());
+    var payment = paymentRepository.save(paymentCreatedInVola);
+    var user = userFrom(membershipFeeCreationForm, email);
     eventRepository.save(Event.from(randomUUID().toString(), payment, user, club, now(), ""));
     assignUserToClub(user, clubId);
   }
