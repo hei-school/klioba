@@ -16,8 +16,8 @@ public class VolaClient {
     this.paymentControllerApi = new PaymentControllerApi(apiClient);
   }
 
-  public Payment create(PspType pspType, String pspId, String email) {
-    return paymentControllerApi.createPayment(apiKey, email, pspType.toString(), pspId);
+  public Payment create(PspType pspType, String pspId, String email, String scope) {
+    return paymentControllerApi.createPayment(apiKey, email, pspType.toString(), pspId, scope);
   }
 
   public Payment get(PspType pspType, String pspId, String email) {
