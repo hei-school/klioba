@@ -29,7 +29,7 @@ class ThEventTest {
             Instant.parse("2025-08-11T13:51:36.165532Z"));
     var user = new User("userId", "Lou", "Andria", "lou@hei.school");
 
-    var club = new Club("c1", "Club 1");
+    var club = new Club("c1", "Club 1", true);
     var thEvent =
         new ThEvent(
             new MembershipFee(
@@ -56,7 +56,7 @@ class ThEventTest {
 
     var user = new User("userId", "Lou", "Andria", "lou@hei.school");
 
-    var club = new Club("c1", "Club 1");
+    var club = new Club("c1", "Club 1", true);
     var thEvent =
         new ThEvent(
             new Withdrawal(
@@ -80,7 +80,7 @@ class ThEventTest {
             Instant.parse("2025-08-11T13:51:36.165532Z"));
     var user = new User("userId", "Lou", "Andria", "lou@hei.school");
 
-    var club = new Club("c1", "Club 1");
+    var club = new Club("c1", "Club 1", true);
     var thEvent =
         new ThEvent(
             new MembershipFee(
@@ -107,7 +107,7 @@ class ThEventTest {
 
     var user = new User("userId", "Lou", "Andria", "lou@hei.school");
 
-    var club = new Club("c1", "Club 1");
+    var club = new Club("c1", "Club 1", true);
     var thEvent =
         new ThEvent(
             new MembershipFee(

@@ -34,7 +34,7 @@ class EventServiceIT extends FacadeIT {
   @BeforeEach
   void setUp() {
     if (jClubRepository.findById("cuisine").isEmpty()) {
-      jClubRepository.save(new JClub("cuisine", "Club Cuisine", new ArrayList<>()));
+      jClubRepository.save(new JClub("cuisine", "Club Cuisine", true, new ArrayList<>()));
     }
   }
 
@@ -49,7 +49,7 @@ class EventServiceIT extends FacadeIT {
     var ref1 = generateValidPspId();
     var newEmail = randomUUID() + "@cute.dev";
 
-    when(volaClientMock.create(any(), eq(ref1), eq(newEmail)))
+    when(volaClientMock.create(any(), eq(ref1), eq(newEmail), any()))
         .thenReturn(VolaTestUtils.aVolaPayment(VERIFYING));
     membershipCreationFormConsumer.accept(
         new MembershipFeeCreationForm("Lou", "Andria", ref1), newEmail, "cuisine");

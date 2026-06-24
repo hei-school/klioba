@@ -35,7 +35,7 @@ class MembershipFeeCreationFormConsumerIT extends FacadeIT {
   @BeforeEach
   void setUp() {
     if (jClubRepository.findById("cuisine").isEmpty()) {
-      jClubRepository.save(new JClub("cuisine", "Club Cuisine", new ArrayList<>()));
+      jClubRepository.save(new JClub("cuisine", "Club Cuisine", true, new ArrayList<>()));
     }
   }
 
@@ -49,9 +49,9 @@ class MembershipFeeCreationFormConsumerIT extends FacadeIT {
     var ref2 = generateValidPspId();
     var newEmail = randomUUID() + "@cute.dev";
 
-    when(volaClientMock.create(any(), eq(ref1), eq(newEmail)))
+    when(volaClientMock.create(any(), eq(ref1), eq(newEmail), any()))
         .thenReturn(VolaTestUtils.aVolaPayment(VerificationStatusEnum.VERIFYING, null, ref1));
-    when(volaClientMock.create(any(), eq(ref2), eq(newEmail)))
+    when(volaClientMock.create(any(), eq(ref2), eq(newEmail), any()))
         .thenReturn(VolaTestUtils.aVolaPayment(VerificationStatusEnum.VERIFYING, null, ref2));
 
     membershipCreationFormConsumer.accept(
@@ -86,7 +86,7 @@ class MembershipFeeCreationFormConsumerIT extends FacadeIT {
   void fees_cannot_have_same_pspId() {
     String pspId = generateValidPspId();
 
-    when(volaClientMock.create(any(), any(), any()))
+    when(volaClientMock.create(any(), any(), any(), any()))
         .thenReturn(VolaTestUtils.aVolaPayment(VerificationStatusEnum.VERIFYING, null, pspId));
 
     membershipCreationFormConsumer.accept(
