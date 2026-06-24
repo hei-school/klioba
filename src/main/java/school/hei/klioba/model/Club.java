@@ -10,4 +10,5 @@ import lombok.ToString;
 public final class Club {
   private final String id;
   private final String name;
+  private final boolean active;
 }
