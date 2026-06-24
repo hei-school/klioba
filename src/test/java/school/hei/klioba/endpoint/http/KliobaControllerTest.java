@@ -69,8 +69,8 @@ class KliobaControllerTest {
   void dashboard_returnsDashboardViewWithStatistics() {
     var clubs =
         List.of(
-            new ClubService.ClubStats("c1", "Club 1", 1000, 5, 800),
-            new ClubService.ClubStats("c2", "Club 2", 2000, 10, 1500));
+            new ClubService.ClubStats("c1", "Club 1", 1000, 5, 800, true),
+            new ClubService.ClubStats("c2", "Club 2", 2000, 10, 1500, true));
 
     when(clubService.getAllClubStats()).thenReturn(clubs);
 
@@ -87,7 +87,7 @@ class KliobaControllerTest {
 
   @Test
   void historyByClub_withDefaultPagination_returnsHistoryView() {
-    var club = new Club("c1", "Club 1");
+    var club = new Club("c1", "Club 1", true);
     var user = new User("1", "John", "Doe", "john@example.com");
     var payment =
         new Payment(
@@ -126,7 +126,7 @@ class KliobaControllerTest {
 
   @Test
   void historyByClub_withCustomPagination_returnsPagedEvents() {
-    var club = new Club("c1", "Club 1");
+    var club = new Club("c1", "Club 1", true);
     var user = new User("1", "John", "Doe", "john@example.com");
     var payment =
         new Payment(
@@ -166,7 +166,7 @@ class KliobaControllerTest {
 
   @Test
   void historyByClub_withSearchFilter_returnsFilteredEvents() {
-    var club = new Club("c1", "Club 1");
+    var club = new Club("c1", "Club 1", true);
     var user = new User("1", "John", "Doe", "john@example.com");
     var payment =
         new Payment(
@@ -200,7 +200,7 @@ class KliobaControllerTest {
 
   @Test
   void historyByClub_withDateFilter_returnsFilteredEvents() {
-    var club = new Club("c1", "Club 1");
+    var club = new Club("c1", "Club 1", true);
     var user = new User("1", "John", "Doe", "john@example.com");
     var payment =
         new Payment(
@@ -236,7 +236,7 @@ class KliobaControllerTest {
 
   @Test
   void historyByClub_withEmptySearch_normalizesToNull() {
-    var club = new Club("c1", "Club 1");
+    var club = new Club("c1", "Club 1", true);
     var user = new User("1", "John", "Doe", "john@example.com");
     var payment =
         new Payment(
@@ -267,7 +267,7 @@ class KliobaControllerTest {
 
   @Test
   void historyByClub_withBothDates_passesBothToService() {
-    var club = new Club("c1", "Club 1");
+    var club = new Club("c1", "Club 1", true);
     var user = new User("1", "John", "Doe", "john@example.com");
     var payment =
         new Payment(
@@ -306,7 +306,7 @@ class KliobaControllerTest {
     when(oAuth2User.getAttributes()).thenReturn(attributes);
     when(authentication.getPrincipal()).thenReturn(oAuth2User);
 
-    var club = new Club("cuisine", "Club Cuisine");
+    var club = new Club("cuisine", "Club Cuisine", true);
     when(clubRepository.findById("cuisine")).thenReturn(java.util.Optional.of(club));
 
     var prefilledForm = new MembershipFeeCreationForm("John", "Doe", "");

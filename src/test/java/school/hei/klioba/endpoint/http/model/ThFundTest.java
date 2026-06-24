@@ -52,7 +52,7 @@ class ThFundTest {
             paymentStatus,
             Instant.parse("2025-08-11T13:51:26.165532Z"),
             Instant.parse("2025-08-11T13:51:36.165532Z"));
-    var club = new Club("c1", "Club 1");
+    var club = new Club("c1", "Club 1", true);
     var event =
         new MembershipFee(
             "eventId", payment, user, club, Instant.parse("2025-08-11T13:51:16.165532Z"));

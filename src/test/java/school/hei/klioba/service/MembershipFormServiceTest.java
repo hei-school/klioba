@@ -43,7 +43,7 @@ public class MembershipFormServiceTest {
   void getPrefilledMembershipForm_hasPreviousEvent_returnsPrefilledForm() {
     String email = "user@example.com";
 
-    Club club = new Club("c1", "Club 1");
+    Club club = new Club("c1", "Club 1", true);
     User user = new User("1", "Tiavina", "Andriamamivony", email);
     Payment payment =
         new Payment(
@@ -69,7 +69,7 @@ public class MembershipFormServiceTest {
   void getPrefilledMembershipForm_multipleEvents_returnsLatestForUser() {
     String email = "user@example.com";
 
-    Club club = new Club("c1", "Club 1");
+    Club club = new Club("c1", "Club 1", true);
     User user1 = new User("1", "Alice", "Smith", email);
     Payment payment1 =
         new Payment(

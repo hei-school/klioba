@@ -23,7 +23,7 @@ class WithdrawalTest {
     var user = new User("u1", "Jane", "Doe", "jane@example.com");
     Instant creationInstant = Instant.now();
 
-    var club = new Club("c1", "Club 1");
+    var club = new Club("c1", "Club 1", true);
     var withdrawal = new Withdrawal("h1", payment, user, club, creationInstant, "");
 
     assertNotNull(withdrawal);
@@ -46,7 +46,7 @@ class WithdrawalTest {
             Instant.parse("2025-08-11T13:51:26.165532Z"),
             Instant.parse("2025-08-11T13:51:36.165532Z"));
     var user = new User("u1", "Jane", "Doe", "jane@example.com");
-    var club = new Club("c1", "Club 1");
+    var club = new Club("c1", "Club 1", true);
     var withdrawal = new Withdrawal("h1", payment, user, club, Instant.now(), "");
 
     assertNotNull(withdrawal.toString());
