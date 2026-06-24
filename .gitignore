@@ -43,5 +43,3 @@ out/
 .DS_Store
 
 .env
-docs/
-.superpowers/
