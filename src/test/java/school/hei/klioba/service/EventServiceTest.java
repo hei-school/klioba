@@ -26,7 +26,7 @@ class EventServiceTest {
   VolaPsp volaPsp = mock(VolaPsp.class);
   EventService eventService = new EventService(eventRepository, volaPsp);
 
-  Club club = new Club("c1", "Club 1");
+  Club club = new Club("c1", "Club 1", true);
   User user = new User("u1", "John", "Doe", "john@test.com");
   Instant now = now();
 

@@ -28,7 +28,7 @@ class ThEventAdditionalTest {
 
     var user = new User("userId", "Lou", "Andria", "lou@hei.school");
 
-    var club = new Club("c1", "Club 1");
+    var club = new Club("c1", "Club 1", true);
     var thEvent =
         new ThEvent(
             new MembershipFee(
@@ -55,7 +55,7 @@ class ThEventAdditionalTest {
 
     var user = new User("userId", "Lou", "Andria", "lou@hei.school");
 
-    var club = new Club("c1", "Club 1");
+    var club = new Club("c1", "Club 1", true);
     var thEvent =
         new ThEvent(
             new Withdrawal(
@@ -78,7 +78,7 @@ class ThEventAdditionalTest {
 
     var user = new User("userId", "Lou", "Andria", "lou@hei.school");
 
-    var club = new Club("c1", "Club 1");
+    var club = new Club("c1", "Club 1", true);
     var thEvent =
         new ThEvent(
             new MembershipFee(
@@ -101,7 +101,7 @@ class ThEventAdditionalTest {
 
     var user = new User("userId", "Alice", "Smith", "alice@example.com");
 
-    var club = new Club("c1", "Club 1");
+    var club = new Club("c1", "Club 1", true);
     var thEvent =
         new ThEvent(
             new Withdrawal(

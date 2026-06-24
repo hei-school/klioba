@@ -23,7 +23,7 @@ class MembershipFeeTest {
     var user = new User("u1", "John", "Doe", "john@example.com");
     var creationInstant = Instant.now();
 
-    var club = new Club("c1", "Club 1");
+    var club = new Club("c1", "Club 1", true);
     var membershipFee = new MembershipFee("d1", payment, user, club, creationInstant);
 
     assertNotNull(membershipFee);
@@ -46,7 +46,7 @@ class MembershipFeeTest {
             Instant.parse("2025-08-11T13:51:26.165532Z"),
             Instant.parse("2025-08-11T13:51:36.165532Z"));
     var user = new User("u1", "John", "Doe", "john@example.com");
-    var club = new Club("c1", "Club 1");
+    var club = new Club("c1", "Club 1", true);
     var membershipFee = new MembershipFee("d1", payment, user, club, Instant.now());
 
     assertNotNull(membershipFee.toString());

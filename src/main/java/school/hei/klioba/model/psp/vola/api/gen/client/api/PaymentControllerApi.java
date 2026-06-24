@@ -49,9 +49,9 @@ public class PaymentControllerApi {
    * @throws RestClientException if an error occurs while attempting to invoke the API
    */
   public Payment createPayment(
-      String apiKey, String payerEmail, String pspType, String pspPaymentId)
+      String apiKey, String payerEmail, String pspType, String pspPaymentId, String scope)
       throws RestClientException {
-    return createPaymentWithHttpInfo(apiKey, payerEmail, pspType, pspPaymentId).getBody();
+    return createPaymentWithHttpInfo(apiKey, payerEmail, pspType, pspPaymentId, scope).getBody();
   }
 
   /**
@@ -61,11 +61,12 @@ public class PaymentControllerApi {
    * @param payerEmail (required)
    * @param pspType (required)
    * @param pspPaymentId (required)
+   * @param scope (optional)
    * @return ResponseEntity&lt;Payment&gt;
    * @throws RestClientException if an error occurs while attempting to invoke the API
    */
   public ResponseEntity<Payment> createPaymentWithHttpInfo(
-      String apiKey, String payerEmail, String pspType, String pspPaymentId)
+      String apiKey, String payerEmail, String pspType, String pspPaymentId, String scope)
       throws RestClientException {
     Object postBody = null;
     // verify the required parameter 'apiKey' is set
@@ -101,6 +102,9 @@ public class PaymentControllerApi {
     queryParams.putAll(apiClient.parameterToMultiValueMap(null, "payerEmail", payerEmail));
     queryParams.putAll(apiClient.parameterToMultiValueMap(null, "pspType", pspType));
     queryParams.putAll(apiClient.parameterToMultiValueMap(null, "pspPaymentId", pspPaymentId));
+    if (scope != null) {
+      queryParams.putAll(apiClient.parameterToMultiValueMap(null, "scope", scope));
+    }
 
     final String[] accepts = {"*/*"};
     final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
