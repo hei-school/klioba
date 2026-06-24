@@ -35,7 +35,7 @@ class MembershipFeeCreationFormConsumerIT extends FacadeIT {
   @BeforeEach
   void setUp() {
     if (jClubRepository.findById("cuisine").isEmpty()) {
-      jClubRepository.save(new JClub("cuisine", "Club Cuisine", new ArrayList<>()));
+      jClubRepository.save(new JClub("cuisine", "Club Cuisine", true, new ArrayList<>()));
     }
   }
 

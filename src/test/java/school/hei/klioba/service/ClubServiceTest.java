@@ -2,6 +2,7 @@ package school.hei.klioba.service;
 
 import static java.time.Instant.now;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static school.hei.klioba.model.PaymentStatus.CONFIRMED;
@@ -166,5 +167,18 @@ class ClubServiceTest {
     assertEquals(0, stats.getFirst().totalCotisations());
     assertEquals(0, stats.getFirst().remainingFund());
     assertEquals(0, stats.getFirst().members());
+  }
+
+  @Test
+  void getAllClubStats_with_inactive_club_returns_inactive_stats() {
+    var inactiveClub = new Club("c3", "Club Inactif", false);
+
+    when(clubRepository.findAll()).thenReturn(List.of(inactiveClub));
+    when(eventService.findAllByClubIdWithPaymentResolution("c3")).thenReturn(List.of());
+
+    var stats = clubService.getAllClubStats();
+
+    assertEquals(1, stats.size());
+    assertFalse(stats.getFirst().active());
   }
 }

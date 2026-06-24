@@ -17,6 +17,13 @@ class ClubTest {
   }
 
   @Test
+  void club_with_inactive_status() {
+    var club = new Club("inactif", "Club Inactif", false);
+
+    assertFalse(club.isActive());
+  }
+
+  @Test
   void club_with_different_id_and_name() {
     var club = new Club("sport", "Club Sport", true);
 

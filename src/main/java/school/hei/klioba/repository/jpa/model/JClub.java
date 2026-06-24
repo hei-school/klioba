@@ -25,7 +25,7 @@ public class JClub {
   private String name;
 
   @Column(nullable = false)
-  private boolean active;
+  private boolean active = true;
 
   @ManyToMany(mappedBy = "clubs")
   private List<JUser> users = new ArrayList<>();
