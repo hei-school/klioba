@@ -1,5 +1,8 @@
 package school.hei.klioba.model.psp.vola.api;
 
+import static org.springframework.web.util.UriUtils.encodeQueryParam;
+
+import java.nio.charset.StandardCharsets;
 import school.hei.klioba.model.psp.PspType;
 import school.hei.klioba.model.psp.vola.api.gen.client.ApiClient;
 import school.hei.klioba.model.psp.vola.api.gen.client.api.PaymentControllerApi;
@@ -14,6 +17,10 @@ public class VolaClient {
     var apiClient = new ApiClient();
     apiClient.setBasePath(baseUrl);
     this.paymentControllerApi = new PaymentControllerApi(apiClient);
+  }
+
+  private static String encodeScope(String scope) {
+    return scope != null ? encodeQueryParam(scope, StandardCharsets.UTF_8) : null;
   }
 
   public Payment create(PspType pspType, String pspId, String email, String scope) {
