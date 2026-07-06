@@ -50,7 +50,7 @@ public class ClubService {
         club.getId(),
         club.getName(),
         totalCotisations,
-        Math.toIntExact(members),
+        (int) Math.min(members, Integer.MAX_VALUE),
         totalCotisations - expenses,
         club.isActive());
   }
