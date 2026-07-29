@@ -18,8 +18,9 @@ public class VolaPsp implements Psp {
   private final VolaClient volaClient;
 
   @Override
-  public Payment create(String kliobaId, PspType pspType, String pspId, String email) {
-    var volaPayment = volaClient.create(pspType, pspId, email);
+  public Payment create(
+      String kliobaId, PspType pspType, String pspId, String email, String scope) {
+    var volaPayment = volaClient.create(pspType, pspId, email, scope);
     return toPayment(kliobaId, volaPayment);
   }
 

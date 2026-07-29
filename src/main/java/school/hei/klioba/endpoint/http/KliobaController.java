@@ -38,11 +38,16 @@ public class KliobaController {
   @GetMapping("/dashboard")
   public String dashboard(Authentication authentication, Model model) {
     var clubs = clubService.getAllClubStats();
-    int totalCotisations = clubs.stream().mapToInt(ClubService.ClubStats::totalCotisations).sum();
-    int totalDepenses =
-        clubs.stream().mapToInt(c -> c.totalCotisations() - c.remainingFund()).sum();
-    int totalRemaining = clubs.stream().mapToInt(ClubService.ClubStats::remainingFund).sum();
-    int totalMembers = clubs.stream().mapToInt(ClubService.ClubStats::members).sum();
+    int totalCotisations = 0;
+    int totalDepenses = 0;
+    int totalRemaining = 0;
+    int totalMembers = 0;
+    for (var c : clubs) {
+      totalCotisations += c.totalCotisations();
+      totalDepenses += c.totalCotisations() - c.remainingFund();
+      totalRemaining += c.remainingFund();
+      totalMembers += c.members();
+    }
     model.addAttribute("clubs", clubs);
     model.addAttribute("totalCotisations", totalCotisations);
     model.addAttribute("totalDepenses", totalDepenses);
